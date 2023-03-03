@@ -1,0 +1,16 @@
+{
+  "name": "todos-ts-graphql",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "repository": "git@github.com:cubdesign/todos-ts-graphql.git",
+  "author": "cubdesign <takeo@cubdesign.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev:frontend": "yarn workspace @todos-ts-graphql/frontend dev",
+    "dev:backend": "yarn workspace @todos-ts-graphql/backend dev"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
