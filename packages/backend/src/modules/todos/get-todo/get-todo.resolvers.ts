@@ -1,0 +1,25 @@
+import { GraphQLError } from "graphql";
+import { MyContext } from "@/types/graphql.js";
+import { Resolvers } from "@/__generated__/graphql.js";
+export const resolvers: Resolvers<MyContext> = {
+  Query: {
+    getTodo: async (_, { getTodoInput }, { prismaClient }, info) => {
+      const existingTodo = await prismaClient.todo.findUnique({
+        where: {
+          id: getTodoInput.todoId,
+        },
+      });
+      if (!existingTodo) {
+        // TODO: handle an error
+        throw new GraphQLError("Todo not found");
+      }
+      return {
+        todo: {
+          ...existingTodo,
+          createdAt: existingTodo.createdAt.toISOString(),
+          updatedAt: existingTodo.updatedAt.toISOString(),
+        },
+      };
+    },
+  },
+};

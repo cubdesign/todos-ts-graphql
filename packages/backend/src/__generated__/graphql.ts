@@ -14,6 +14,15 @@ export type Scalars = {
   Float: number;
 };
 
+export type GetTodoInput = {
+  todoId: Scalars['String'];
+};
+
+export type GetTodoResponse = {
+  __typename?: 'GetTodoResponse';
+  todo: Todo;
+};
+
 export type GetTodosResponse = {
   __typename?: 'GetTodosResponse';
   todos?: Maybe<Array<Maybe<Todo>>>;
@@ -52,8 +61,14 @@ export type MutationUpdateTodoArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  getTodo: GetTodoResponse;
   getTodos: GetTodosResponse;
   greet?: Maybe<Scalars['String']>;
+};
+
+
+export type QueryGetTodoArgs = {
+  getTodoInput: GetTodoInput;
 };
 
 export type RemoveTodoInput = {
@@ -155,6 +170,8 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  GetTodoInput: GetTodoInput;
+  GetTodoResponse: ResolverTypeWrapper<GetTodoResponse>;
   GetTodosResponse: ResolverTypeWrapper<GetTodosResponse>;
   MakeTodoInput: MakeTodoInput;
   MakeTodoResponse: ResolverTypeWrapper<MakeTodoResponse>;
@@ -171,6 +188,8 @@ export type ResolversTypes = {
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
+  GetTodoInput: GetTodoInput;
+  GetTodoResponse: GetTodoResponse;
   GetTodosResponse: GetTodosResponse;
   MakeTodoInput: MakeTodoInput;
   MakeTodoResponse: MakeTodoResponse;
@@ -182,6 +201,11 @@ export type ResolversParentTypes = {
   Todo: Todo;
   UpdateTodoInput: UpdateTodoInput;
   UpdateTodoResponse: UpdateTodoResponse;
+};
+
+export type GetTodoResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['GetTodoResponse'] = ResolversParentTypes['GetTodoResponse']> = {
+  todo?: Resolver<ResolversTypes['Todo'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type GetTodosResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['GetTodosResponse'] = ResolversParentTypes['GetTodosResponse']> = {
@@ -201,6 +225,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  getTodo?: Resolver<ResolversTypes['GetTodoResponse'], ParentType, ContextType, RequireFields<QueryGetTodoArgs, 'getTodoInput'>>;
   getTodos?: Resolver<ResolversTypes['GetTodosResponse'], ParentType, ContextType>;
   greet?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 };
@@ -225,6 +250,7 @@ export type UpdateTodoResponseResolvers<ContextType = any, ParentType extends Re
 };
 
 export type Resolvers<ContextType = any> = {
+  GetTodoResponse?: GetTodoResponseResolvers<ContextType>;
   GetTodosResponse?: GetTodosResponseResolvers<ContextType>;
   MakeTodoResponse?: MakeTodoResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
