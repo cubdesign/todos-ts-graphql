@@ -38,3 +38,6 @@ npm-debug.log
 
 # express
 dist
+
+# prisma
+dev.db
