@@ -21,7 +21,6 @@ export const buildSchema = async () => {
 
   const pathToTypeDefs = path.join(pathToModules, "**", "*.graphql");
 
-  console.log({ pathToTypeDefs });
   const typeDefs = globSync(pathToTypeDefs).map((typeDefsFile) =>
     fs.readFileSync(typeDefsFile, { encoding: "utf8" })
   );
