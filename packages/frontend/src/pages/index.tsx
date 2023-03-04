@@ -10,8 +10,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div>Todo</div>
+      <main className="p-10">
+        <h1 className="text-3xl">Hello world!</h1>
       </main>
     </>
   );
