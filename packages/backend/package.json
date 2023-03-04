@@ -9,7 +9,9 @@
     "dev": "nodemon --esm src/index.ts",
     "build": "yarn cpgql && tsc",
     "start": "node dist/index.js",
-    "gen": "graphql-codegen --config codegen.yml",
+    "gen:gql": "graphql-codegen --config codegen.yml",
+    "gen:db": "prisma migrate dev --name",
+    "db:gui": "prisma studio",
     "cpgql": "copyfiles -u 1 src/**/*.graphql ./dist"
   },
   "devDependencies": {
@@ -30,8 +32,10 @@
   },
   "dependencies": {
     "@apollo/server": "^4.4.1",
+    "@prisma/client": "^4.11.0",
     "express": "^4.18.2",
     "glob": "^9.2.1",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "prisma": "^4.11.0"
   }
 }
