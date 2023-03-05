@@ -16,6 +16,6 @@ https://github.com/ryuichi24/ts-fullstack-gql
 - [x] #4 https://www.youtube.com/watch?v=45bvkwn4CqU&ab_channel=JuniorDevMind
 - [x] #5 https://www.youtube.com/watch?v=bc19UYOWvwQ&ab_channel=JuniorDevMind
 - [x] #6 https://www.youtube.com/watch?v=vYV_4_d-N-w&ab_channel=JuniorDevMind
-- [ ] #7 https://www.youtube.com/watch?v=oYTlpjmmZRU&ab_channel=JuniorDevMind
+- [x] #7 https://www.youtube.com/watch?v=oYTlpjmmZRU&ab_channel=JuniorDevMind
 - [ ] #8 https://www.youtube.com/watch?v=SlG0nPF4xPE&ab_channel=JuniorDevMind
 - [ ] #9 https://www.youtube.com/watch?v=A19IEatPCXs&ab_channel=JuniorDevMind
