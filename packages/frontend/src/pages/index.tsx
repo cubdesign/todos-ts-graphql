@@ -2,6 +2,9 @@ import React from "react";
 import Head from "next/head";
 import { useGetTodosQuery } from "@/__generated__/graphql";
 import { Layout } from "@/components/Layout/Layout";
+import { TodoItem } from "@/components/TodoItem";
+import { Button } from "@/components/Elements/Button";
+import { InputFiled } from "@/components/Elements/InputFiled";
 
 export default function Home() {
   const { data, loading, error } = useGetTodosQuery();
@@ -13,17 +16,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1 className="text-3xl">Hello world!</h1>
-        <div>{loading && <p>Loading...</p>}</div>
-        <div>
-          {data?.getTodos?.todos?.map((todo) => (
-            <div key={todo?.id}>
-              <p>{todo?.title}</p>
-              <p>{todo?.createdAt.toISOString()}</p>
-            </div>
-          ))}
+      <main className="max-w-xl mx-auto p-7">
+        <div className="bg-white p-6 rounded shadow">
+          <form className="flex flex-col">
+            <InputFiled
+              containerClassName="flex flex-col mb-6"
+              labelName="New Todo"
+              placeholder="buy some food..."
+            />
+            <Button>Add Todo</Button>
+          </form>
         </div>
+        <div>{loading && <p>Loading...</p>}</div>
+        {data?.getTodos?.todos?.map((item) => (
+          <TodoItem key={item?.id} todoItem={item!} />
+        ))}
       </main>
     </Layout>
   );
