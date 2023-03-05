@@ -1,7 +1,10 @@
 import React from "react";
 import Head from "next/head";
+import { useQuery } from "@apollo/client";
+import { Todo, useGetTodosQuery } from "@/__generated__/graphql";
 
 export default function Home() {
+  const { data, loading, error } = useGetTodosQuery();
   return (
     <>
       <Head>
@@ -12,6 +15,15 @@ export default function Home() {
       </Head>
       <main className="p-10">
         <h1 className="text-3xl">Hello world!</h1>
+        <div>{loading && <p>Loading...</p>}</div>
+        <div>
+          {data?.getTodos?.todos?.map((todo) => (
+            <div key={todo?.id}>
+              <p>{todo?.title}</p>
+              <p>{todo?.createdAt.toISOString()}</p>
+            </div>
+          ))}
+        </div>
       </main>
     </>
   );
