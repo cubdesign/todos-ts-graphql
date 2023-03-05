@@ -22,6 +22,8 @@ module.exports = {
   },
   plugins: ["react", "react-hooks", "@typescript-eslint"],
   rules: {
+    "no-empty-pattern": "off",
+    "@typescript-eslint/ban-types": "off",
     "react/prop-types": "off",
   },
 };
